@@ -39,8 +39,14 @@ def test_model_in_empty_document_unsets_curdoc_on_model_references_and_then_rest
 def test_Model_pretty():
     class Foo1(Model):
         pass
-
-    assert Foo1(id='1').pretty() == "bokeh.tests.test_model.Foo1(id='1', js_callbacks={}, name=None, tags=[])"
+    assert Foo1(id='1').pretty() == """\
+bokeh.tests.test_model.Foo1(
+    id='1',
+    js_callbacks={},
+    js_event_callbacks={},
+    name=None,
+    subscribed_events=[],
+    tags=[])"""
 
     class Foo2(Model):
         a = Int(12)
@@ -54,7 +60,9 @@ bokeh.tests.test_model.Foo2(
     b='hello',
     c=[1, 2, 3],
     js_callbacks={},
+    js_event_callbacks={},
     name=None,
+    subscribed_events=[],
     tags=[])"""
 
     class Foo3(Model):
@@ -71,7 +79,9 @@ bokeh.tests.test_model.Foo3(
     c=[1, 2, 3],
     d=None,
     js_callbacks={},
+    js_event_callbacks={},
     name=None,
+    subscribed_events=[],
     tags=[])"""
 
     class Foo4(Model):
@@ -94,10 +104,14 @@ bokeh.tests.test_model.Foo4(
         b='hello',
         c=[1, 2, 3],
         js_callbacks={},
+        js_event_callbacks={},
         name=None,
+        subscribed_events=[],
         tags=[]),
     js_callbacks={},
+    js_event_callbacks={},
     name=None,
+    subscribed_events=[],
     tags=[])"""
 
     class Foo5(Model):
@@ -117,10 +131,14 @@ bokeh.tests.test_model.Foo5(
         id='uvw',
         foo5=bokeh.tests.test_model.Foo5(id='xyz', ...),
         js_callbacks={},
+        js_event_callbacks={},
         name=None,
+        subscribed_events=[],
         tags=[]),
     js_callbacks={},
+    js_event_callbacks={},
     name=None,
+    subscribed_events=[],
     tags=[])"""
 
 class SomeModel(Model):
